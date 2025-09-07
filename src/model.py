@@ -14,7 +14,7 @@ def train_model(df, features, target):
     """
 
     # Aqui eu separei as variáveis independentes (que são as features) e a variávei que eu quero prever (que é o target)
-    x = df[features]
+    X = df[features]
     y = df[target]
 
     # Aqui agora eu dividi os dados em treino e teste para avaliar o modelo depois
@@ -23,13 +23,13 @@ def train_model(df, features, target):
 
     # Aqui eu criei o modelo de regressão linear e treinei com os dados de treino
     model = LinearRegression()
-    model.fir(X_train, y_train)
+    model.fit(X_train, y_train)
 
     # Agora aqui eu fiz a previsão com os dados de teste para ver como o modelo se saiu
     y_pred = model.predict(X_test)
 
     # Aqi eu calculei o erro médio quadrático raiz (o RMSE) para medir o erro das previsões
-    rmse = mean_squared_error(y_test, y_pred, squared=False)
+    rmse = mean_squared_error(y_test, y_pred) ** 0.5
 
     # Agora aqui eu calculei o R2 para ver quanto da variação da nota o modelo explica (como eu disse la em cima quanto mais perto de 1 melhor)
     r2 = r2_score(y_test, y_pred)
