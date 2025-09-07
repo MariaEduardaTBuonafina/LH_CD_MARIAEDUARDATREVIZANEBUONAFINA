@@ -1,0 +1,27 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environments
+env/
+venv/
+
+# VSCode settings
+.vscode/
+
+# MacOS files
+.DS_Store
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Model files (se quiser ignorar modelos treinados, mas geralmente é bom versionar)
+# models/*.pkl
+
+# Arquivos temporários
+*.tmp
