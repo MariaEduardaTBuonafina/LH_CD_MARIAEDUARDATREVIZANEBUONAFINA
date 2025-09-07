@@ -19,11 +19,11 @@ Este projeto é a solução do desafio de ciência de dados que foi proposto pel
 
 ## Estrutura do projeto
 
-- data: Dados brutos do arquivo csv do desafio
-- notebooks: Notebooks com análise exploratória e modelagem que foi feita
-- src: Scripts Python com funções reutilizáveis
-- models: Modelos treinados salvos (.pkl)
-- reports: Relatórios em PDF com as análises e conclusões
+- `data`: Dados brutos do arquivo csv do desafio
+- `notebooks/`: Notebooks com análise exploratória e modelagem que foi feita
+- `src/`: Scripts Python com funções reutilizáveis
+- `models/`: Modelo treinado salvo (.pkl)
+- `reports/`: Relatório em HTML e PDF com as análises e conclusões
 
 ## Sobre os dados
 
