@@ -1,107 +1,125 @@
 # Desafio Indicium - Ciência de Dados
 
-Este projeto é a solução do desafio de ciência de dados que foi proposto pela Indicium que é a análise dos dados cinematográficos do estúdio PProductions.
+Este projeto é a minha solução para o desafio de Ciência de Dados proposto pela Indicium, com foco na análise de dados de filmes do estúdio fictício PProductions.
 
-## Objetivo
+- Objetivo
 
-É analisar um banco de dados de filmes para orientar a PProductions sobre qual tipo de filme desenvolver, considerando fatores que influenciam o faturamento e a avaliação desses filmes.
+O principal objetivo foi analisar um conjunto de dados sobre filmes, entender os padrões que influenciam a avaliação do público e o faturamento, e com isso ajudar a PProductions a decidir quais tipos de filmes podem ter melhor desempenho.
 
-## Como executar o projeto
+- Como executar o projeto
 
-1. Clone o repositório:
-   https://github.com/MariaEduardaTBuonafina/LH_CD_MARIAEDUARDATREVIZANEBUONAFINA.git
-2. Entre na pasta do projeto:
-   cd LH_CD_MARIAEDUARDATREVIZANEBUONAFINA
-3. Instale as dependências:
-   pip install -r requirements.txt
-4. Abra o Jupyter Notebook
-5. Navegue até a pasta notebooks e abra o arquivo principal.
+Clone o repositório:
 
-## Estrutura do projeto
+git clone https://github.com/MariaEduardaTBuonafina/LH_CD_MARIAEDUARDATREVIZANEBUONAFINA.git
 
-- `data`: Dados brutos do arquivo csv do desafio
-- `notebooks/`: Notebooks com análise exploratória e modelagem que foi feita
-- `src/`: Scripts Python com funções reutilizáveis
-- `models/`: Modelo treinado salvo (.pkl)
-- `reports/`: Relatório em HTML e PDF com as análises e conclusões
 
-## Sobre os dados
+Entre na pasta do projeto:
 
-O arquivo de dados contém informações sobre filmes, incluindo título, ano de lançamento, classificação etária, duração, gênero, nota do IMDB, sinopse, meta score, diretor, elenco principal, número de votos e faturamento.
+cd LH_CD_MARIAEDUARDATREVIZANEBUONAFINA
 
-# Enriquecimento de Dados com a API da OMDb
 
-Este projeto utiliza dados externos da OMDb API (Open Movie Database)
- para enriquecer o dataset original com informações adicionais como: diretor, país de origem, premiações, duração, idiomas, entre outras.
+Instale as dependências:
 
-# O que é necessário para rodar essa parte do projeto:
+pip install -r requirements.txt
 
-- Criar uma conta gratuita no site da OMDb:
+
+Abra o Jupyter Notebook:
+
+jupyter notebook
+
+
+Vá até a pasta notebooks/ e abra os arquivos de análise exploratória e modelagem.
+
+- Estrutura do projeto
+
+data/: Arquivos CSV com os dados originais e enriquecidos
+
+notebooks/: Notebooks com a análise e a modelagem
+
+src/: Scripts Python com funções reutilizáveis (data processing, modelagem etc)
+
+models/: Modelo de predição salvo (.pkl)
+
+reports/: Relatório final em HTML com conclusões do projeto
+
+- Sobre os dados
+
+O conjunto de dados inclui:
+
+Nome do filme, ano de lançamento e classificação etária
+
+Duração (em minutos), gênero e sinopse
+
+Avaliação no IMDB e no Metascore
+
+Elenco principal e diretor
+
+Número de votos e faturamento
+
+- Enriquecimento com a OMDb API
+
+O projeto também inclui uma etapa de enriquecimento de dados externos, usando a OMDb API
+ para buscar informações adicionais sobre cada filme:
+
+Diretor
+
+País de origem
+
+Premiações recebidas
+
+Idiomas
+
+Gênero (pela OMDb)
+
+Metascore
+
+Número de votos (imdbVotes)
+
+Duração oficial (Runtime_OMDb)
+
+- O que você precisa para rodar essa parte:
+
+Criar uma conta gratuita na OMDb:
 
 Acesse: https://www.omdbapi.com/apikey.aspx
 
-Preencha os dados solicitados
+Escolha o plano gratuito e gere sua chave de API
 
-Escolha o plano Free (gratuito)
-
-Após confirmar o e-mail, sua chave de API (API Key) será gerada
-
-Adicionar a sua chave da OMDb ao script:
-
-Vá até o arquivo enriquecimento_omdb.py (ou o nome correspondente que você estiver usando)
-
-Substitua a variável API_KEY com a sua chave:
+Adicione sua chave no script src/buscar_dados_omdb.py:
 
 API_KEY = 'Sua_Chave'
 
-
-- Executar o script de enriquecimento:
-
-Certifique-se de que o arquivo original (desafio_indicium_imdb.csv) está localizado na pasta data/
 
 Rode o script:
 
 python src/buscar_dados_omdb.py
 
-- Resultado:
 
-O script irá buscar os dados na API e criar um novo arquivo na pasta data/ chamado:
+Resultado:
+
+Um novo arquivo CSV será criado na pasta data/ com o nome:
 
 desafio_indicium_imdb_enriquecido.csv
 
-# Aviso sobre o arquivo desafio_indicium_imdb_enriquecido.csv
+- Sobre o arquivo enriquecido
 
-Este projeto inclui um arquivo chamado desafio_indicium_imdb_enriquecido.csv localizado na pasta /data. Ele já foi gerado utilizando a API da OMDb para enriquecer os dados originais com informações adicionais sobre os filmes, como:
+O arquivo desafio_indicium_imdb_enriquecido.csv já está incluído na pasta /data para facilitar a execução do projeto.
 
-- País de origem (Country)
-- Premiações (Awards)
-- Gênero segundo a OMDb (Genre_OMDb)
-- Idioma (Language)
-- Votos no IMDb (imdbVotes)
-- Metascore, entre outros.
+Mas, se preferir, você pode executar o script src/buscar_dados_omdb.py novamente para:
 
-# Importante: 
-O script src/buscar_dados_omdb.py ainda está disponível no projeto. Ele pode ser executado novamente a qualquer momento para gerar um novo arquivo enriquecido, especialmente se você quiser:
+Atualizar os dados
 
-- Testar com uma nova chave da OMDb.
-- Atualizar os dados.
-- Rodar o projeto completo do 0
-  
-Para isso, você pode executar:
-- python src/buscar_dados_omdb.py
+Testar com outra chave da API
 
-Isso irá gerar novamente o arquivo data/desafio_indicium_imdb_enriquecido.csv.
+Rodar o projeto do zero
 
-
-Caso deseje rodar esse script, será necessário gerar uma chave da API OMDb, conforme explicado mais acima neste README.
-
-# Observações importantes:
+- Observações importantes
 
 A versão gratuita da OMDb API permite até 1.000 requisições por dia.
 
-Para evitar ultrapassar o limite, o script faz uma pequena pausa (0.2 segundos) entre cada requisição.
+Para evitar bloqueios, o script faz uma pausa de 0.2 segundos entre cada requisição.
 
-Caso o limite seja ultrapassado, o script será encerrado e você verá a mensagem:
+Caso o limite diário seja atingido, o script irá parar com a mensagem:
 
 Ultrapassou o limite de requisições da API. Vou parar o script.
 

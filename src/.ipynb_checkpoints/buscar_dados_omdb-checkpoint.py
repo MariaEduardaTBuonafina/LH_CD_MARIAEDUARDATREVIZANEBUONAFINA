@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
 
 # Aqui eu começei importando algumas bibliotecas 
 import requests  # para fazer requisições na API da OMDb
