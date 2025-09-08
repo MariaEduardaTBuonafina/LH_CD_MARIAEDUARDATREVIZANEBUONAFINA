@@ -1,128 +1,134 @@
 # Desafio Indicium - Ciência de Dados
 
-Este projeto é a minha solução para o desafio de Ciência de Dados proposto pela Indicium, com foco na análise de dados de filmes do estúdio fictício PProductions.
+Este projeto é a minha solução para o desafio de Ciência de Dados proposto pela Indicium, com foco na análise de dados cinematográficos de um estúdio fictício chamado PProductions.
 
-- Objetivo
+---
 
-O principal objetivo foi analisar um conjunto de dados sobre filmes, entender os padrões que influenciam a avaliação do público e o faturamento, e com isso ajudar a PProductions a decidir quais tipos de filmes podem ter melhor desempenho.
+## Objetivo
 
-- Como executar o projeto
+O principal objetivo foi analisar um conjunto de dados sobre filmes, identificar padrões que influenciam o faturamento e a avaliação do público, e fornecer recomendações para ajudar a PProductions a tomar decisões mais estratégicas sobre quais tipos de filmes produzir.
 
-Clone o repositório:
+---
 
+## Como executar o projeto
+
+### 1. Clone o repositório
+
+```bash
 git clone https://github.com/MariaEduardaTBuonafina/LH_CD_MARIAEDUARDATREVIZANEBUONAFINA.git
-
-
-Entre na pasta do projeto:
-
 cd LH_CD_MARIAEDUARDATREVIZANEBUONAFINA
+```
 
+### 2. Instale as dependências
 
-Instale as dependências:
+Recomenda-se o uso de um ambiente virtual:
 
+```bash
 pip install -r requirements.txt
+```
 
+### 3. Rode o Jupyter Notebook
 
-Abra o Jupyter Notebook:
-
+```bash
 jupyter notebook
+```
 
+Depois, navegue até a pasta `notebooks/` e abra os arquivos de análise exploratória, modelagem e recomendações.
 
-Vá até a pasta notebooks/ e abra os arquivos de análise exploratória e modelagem.
+---
 
-- Estrutura do projeto
+## Estrutura do Projeto
 
-data/: Arquivos CSV com os dados originais e enriquecidos
+```plaintext
+├── data/           # Arquivos CSV com os dados originais e enriquecidos
+├── models/         # Modelos treinados (.pkl)
+├── notebooks/      # Notebooks com análise, modelagem e insights finais
+├── reports/        # Relatório final em HTML
+├── src/            # Scripts Python com funções reutilizáveis
+├── requirements.txt
+└── README.md
+```
 
-notebooks/: Notebooks com a análise e a modelagem
+---
 
-src/: Scripts Python com funções reutilizáveis (data processing, modelagem etc)
+## Sobre os dados
 
-models/: Modelo de predição salvo (.pkl)
+O conjunto de dados inclui diversas variáveis sobre filmes:
 
-reports/: Relatório final em HTML com conclusões do projeto
+- Título do filme
+- Ano de lançamento
+- Classificação etária (certificate)
+- Duração (runtime)
+- Gênero
+- Sinopse (overview)
+- Avaliação do IMDB
+- Meta Score
+- Elenco principal (Star1, Star2, etc.)
+- Diretor
+- Número de votos
+- Faturamento (gross)
 
-- Sobre os dados
+---
 
-O conjunto de dados inclui:
+## Enriquecimento com a OMDb API
 
-Nome do filme, ano de lançamento e classificação etária
+O projeto utiliza a OMDb API para enriquecer o conjunto de dados com informações adicionais como:
 
-Duração (em minutos), gênero e sinopse
+- País de origem (Country)
+- Premiações recebidas (Awards)
+- Gênero fornecido pela OMDb (Genre_OMDb)
+- Idiomas (Language)
+- Duração oficial (Runtime_OMDb)
+- Diretor e elenco (confirmação)
+- Meta score atualizado
+- Número de votos no IMDB (imdbVotes)
 
-Avaliação no IMDB e no Metascore
+---
 
-Elenco principal e diretor
+## Como utilizar a OMDb API
 
-Número de votos e faturamento
+1. Crie uma conta gratuita em:  
+   https://www.omdbapi.com/apikey.aspx
 
-- Enriquecimento com a OMDb API
+2. Gere sua chave de API no plano gratuito.
 
-O projeto também inclui uma etapa de enriquecimento de dados externos, usando a OMDb API
- para buscar informações adicionais sobre cada filme:
+3. No arquivo `src/buscar_dados_omdb.py`, insira sua chave:
 
-Diretor
-
-País de origem
-
-Premiações recebidas
-
-Idiomas
-
-Gênero (pela OMDb)
-
-Metascore
-
-Número de votos (imdbVotes)
-
-Duração oficial (Runtime_OMDb)
-
-- O que você precisa para rodar essa parte:
-
-Criar uma conta gratuita na OMDb:
-
-Acesse: https://www.omdbapi.com/apikey.aspx
-
-Escolha o plano gratuito e gere sua chave de API
-
-Adicione sua chave no script src/buscar_dados_omdb.py:
-
+```python
 API_KEY = 'Sua_Chave'
+```
 
+4. Execute o script para enriquecer os dados:
 
-Rode o script:
-
+```bash
 python src/buscar_dados_omdb.py
+```
 
+Um novo arquivo será criado automaticamente:
 
-Resultado:
+```
+data/desafio_indicium_imdb_enriquecido.csv
+```
 
-Um novo arquivo CSV será criado na pasta data/ com o nome:
+> **Observação**: esse arquivo já está incluído no repositório, mas você pode gerar novamente se quiser atualizar os dados ou testar com outra chave da API.
 
-desafio_indicium_imdb_enriquecido.csv
+---
 
-- Sobre o arquivo enriquecido
+## Limites da API
 
-O arquivo desafio_indicium_imdb_enriquecido.csv já está incluído na pasta /data para facilitar a execução do projeto.
+- A versão gratuita da OMDb permite até 1.000 requisições por dia.
+- Para evitar bloqueios, o script inclui uma pausa de `0.2 segundos` entre cada requisição.
+- Caso o limite seja atingido, a seguinte mensagem será exibida:
 
-Mas, se preferir, você pode executar o script src/buscar_dados_omdb.py novamente para:
-
-Atualizar os dados
-
-Testar com outra chave da API
-
-Rodar o projeto do zero
-
-- Observações importantes
-
-A versão gratuita da OMDb API permite até 1.000 requisições por dia.
-
-Para evitar bloqueios, o script faz uma pausa de 0.2 segundos entre cada requisição.
-
-Caso o limite diário seja atingido, o script irá parar com a mensagem:
-
+```
 Ultrapassou o limite de requisições da API. Vou parar o script.
+```
+
+
+---
 
 ## Contato
 
-Maria Eduarda Trevizane Buonafina - meduardatb7@gmail.com
+**Maria Eduarda Trevizane Buonafina**  
+E-mail: [meduardatb7@gmail.com](mailto:meduardatb7@gmail.com)  
+GitHub: [MariaEduardaTBuonafina](https://github.com/MariaEduardaTBuonafina)
