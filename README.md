@@ -33,6 +33,22 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
+Ele abrirá automaticamente uma página no navegador com um endereço parecido com:
+
+```bash
+http://localhost:8888/?token=algumacodigosecreto
+```
+
+Esse token é um código de segurança gerado automaticamente para proteger o acesso ao Jupyter.
+
+### Como acessar
+
+No terminal ou PowerShell onde você executou o comando, será exibido um link completo contendo o token.  
+Copie esse link inteiro e cole na barra de endereços do seu navegador para acessar a interface do Jupyter.
+
+O endereço localhost significa que o Jupyter está rodando localmente na sua máquina.
+
+
 Depois, navegue até a pasta `notebooks/` e abra os arquivos de análise exploratória, modelagem e recomendações.
 
 ---
@@ -41,9 +57,9 @@ Depois, navegue até a pasta `notebooks/` e abra os arquivos de análise explora
 
 ```plaintext
 ├── data/           # Arquivos CSV com os dados originais e enriquecidos
-├── models/         # Modelos treinados (.pkl)
-├── notebooks/      # Notebooks com análise, modelagem e insights finais
-├── reports/        # Relatório final em HTML
+├── models/         # Modelo treinado (.pkl)
+├── notebooks/      # Notebooks com análise, modelagem e insights finais e um relatório final completo
+├── reports/        # Relatório EDA em HTML
 ├── src/            # Scripts Python com funções reutilizáveis
 ├── requirements.txt
 └── README.md
